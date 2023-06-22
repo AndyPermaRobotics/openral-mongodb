@@ -18,9 +18,20 @@ class RalObjectRepositoryMongoDb extends RalObjectRepository {
   Future<void> create(RalObject<SpecificProperties> ralObject, {required bool overrideIfExists}) async {
     final collection = mongoDb.collection(collectionName);
 
-    final result = await collection.insert(ralObject.toMap());
+    if (overrideIfExists) {
+      final result = await collection.remove(where.eq("identity.UID", ralObject.identity.uid));
+      //return value looks like: `{n: 1, ok: 1.0}`
 
-    print("create result: $result");
+      if (result["ok"] != 1.0) {
+        print("Failed to remove existing RalObject with uid '${ralObject.identity.uid}': $result");
+      }
+    }
+
+    final result = await collection.insertOne(ralObject.toMap());
+
+    if (result.isFailure) {
+      throw Exception("Failed to insert RalObject '${ralObject.identity.uid}': $result");
+    }
   }
 
   @override
