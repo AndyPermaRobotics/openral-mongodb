@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Start MongoDB Test Instance",
+            "command": "./start_mongodb_test_instance.sh",
+            "problemMatcher": [],
+        },
+        {
+            "type": "shell",
+            "label": "Flutter: Run tests of file",
+            "command": "cd dart/openral_mongodb && flutter test ${file}",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Python: Run tests of current file",
+            "command": "python3 -m pytest ${file}",
+            "problemMatcher": []
+        },
+    ]
+}

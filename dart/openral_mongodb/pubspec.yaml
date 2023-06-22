@@ -1,17 +1,19 @@
 name: openral_mongodb
-description: Implementation of the RalRepositories of openral-core with MongoDB
+description: MongoDB Implementation of the RalRepositories of openral-core
 version: 1.0.0
 repository: https://github.com/AndyPermaRobotics/openral-mongodb
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
   mongo_dart: ^0.9.1
-  openral_flutter: 
+  openral_core: 
     git: 
         url: git@github.com:AndyPermaRobotics/openral-core.git
-        path: flutter/openral_flutter
+        path: dart
 
 dev_dependencies:
   lints: ^2.0.0

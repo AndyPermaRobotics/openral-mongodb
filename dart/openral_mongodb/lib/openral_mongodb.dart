@@ -1,8 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// MongoDB Implementation of the RalRepositories of openral-core
 library openral_mongodb;
 
-export 'src/openral_mongodb_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/mongo_db_connection.dart';
+export 'src/repository/ral_repository_mongo_db.dart';
