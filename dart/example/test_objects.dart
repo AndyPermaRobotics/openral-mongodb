@@ -1,11 +1,11 @@
 import 'package:openral_core/openral_core.dart';
 
-final A = RalObject(
+final objectA = RalObject(
   identity: Identity(
     uid: "A",
   ),
   definition: Definition(),
-  template: Template(
+  template: ObjectTemplate(
     ralType: "A_Type",
     version: "1.0",
   ),
@@ -17,12 +17,12 @@ final A = RalObject(
   ),
 );
 
-final B = RalObject(
+final objectB = RalObject(
   identity: Identity(
     uid: "B",
   ),
   definition: Definition(),
-  template: Template(
+  template: ObjectTemplate(
     ralType: "B_Type",
     version: "1.0",
   ),

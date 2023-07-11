@@ -19,7 +19,11 @@ class RalObjectRepositoryMongoDb extends RalObjectRepository {
     final collection = mongoDb.collection(collectionName);
 
     if (overrideIfExists) {
-      final result = await collection.replaceOne(where.eq("identity.UID", ralObject.identity.uid), ralObject.toMap());
+      final result = await collection.replaceOne(
+        where.eq("identity.UID", ralObject.identity.uid),
+        ralObject.toMap(),
+        upsert: true,
+      );
 
       if (result.isFailure) {
         print("Failed to remove existing RalObject with uid '${ralObject.identity.uid}': ${result.errmsg}");

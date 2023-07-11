@@ -14,4 +14,4 @@ services:
             #MONGO_INITDB_ROOT_USERNAME: root
             #MONGO_INITDB_ROOT_PASSWORD: password
             #MONGO_INITDB_DATA: /docker-entrypoint-initdb.d/init.js
-        command: mongod --bind_ip_all #--auth
+        command: mongod --bind_ip_all --replSet rs0; sleep 5; mongosh --eval "rs.initiate()"
