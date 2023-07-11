@@ -4,7 +4,7 @@ import 'package:openral_mongodb/openral_mongodb.dart';
 import 'test_objects.dart';
 
 Future<void> main() async {
-  //! Start the mongoDB Test Instance first. $> ./start_mongo_test_instance.sh
+  //! Start the mongoDB Test Instance first. $> ./start_mongodb_test_instance.sh
 
   final repo = await _createRepository();
 
@@ -13,13 +13,13 @@ Future<void> main() async {
   await repo.create(B, overrideIfExists: true);
 
   final objectsByContainerId = await repo.getByContainerId("C");
-  print("Objects by container id 'C': ${objectsByContainerId.map((e) => e.identity.uid).toList()}"); //should be A and B
+  print("Objects by container id 'C' (expected [A,B]): ${objectsByContainerId.map((e) => e.identity.uid).toList()}"); //should be A and B
 
   final objectsByRalType = await repo.getByRalType("A_Type");
-  print("Objects by ral type 'A_Type': ${objectsByRalType.map((e) => e.identity.uid).toList()}"); //should be A
+  print("Objects by ral type 'A_Type' (expected [A]): ${objectsByRalType.map((e) => e.identity.uid).toList()}"); //should be A
 
   final objectByUid = await repo.getByUid("B");
-  print("Object by uid: ${objectByUid.identity.uid}"); //should be B
+  print("Object by uid (expected B): ${objectByUid.identity.uid}"); //should be B
 }
 
 ///creates a [RalObjectRepositoryMongoDb] with a connection to a local mongoDB instance.
