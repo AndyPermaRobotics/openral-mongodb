@@ -2,6 +2,19 @@
 
 Implementations of the RalRepositories of openral-core for MongoDB in various programming languages.
 
+## Hints
+
+### Replica Set for Watching
+
+To use the methods of the repositories that watch for changes, we have to start the MongoDB as a ReplicaSet.
+See: https://www.mongodb.com/docs/manual/tutorial/convert-standalone-to-replica-set/
+
+In `docker-compose.yml` you can see the configuration for the ReplicaSet:
+    
+```yaml
+command: mongod --bind_ip_all --replSet rs0; sleep 5; mongosh --eval "rs.initiate()"
+``` 
+
 
 ## Testing
 
