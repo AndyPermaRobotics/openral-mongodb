@@ -3,7 +3,6 @@ from typing import Any, Callable, List, Mapping, Optional
 
 from openral_py.ral_object import RalObject
 from openral_py.repository import RalRepository
-from pymongo import MongoClient
 from pymongo.database import Database
 
 
@@ -73,6 +72,14 @@ class RalRepositoryMongoDB(RalRepository):
 
         return ral_objects
 
+
+    def update_object_state(self, uid: str, state: str):
+        """
+        Updates the `objectState` of the [RalObject] with the given uid in the database.
+        """
+
+        collection = self._get_collection()
+        collection.update_one({"identity.UID": uid}, {"$set": {"objectState": state}})
 
     def _get_collection(self):
         return self._database.get_collection(self._collectionName)
