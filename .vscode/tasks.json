@@ -18,7 +18,19 @@
         {
             "type": "shell",
             "label": "Python: Run tests of current file",
-            "command": "python3 -m pytest ${file}",
+            "command": "source ./python/.venv/bin/activate && python -m pytest ${file}",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Build and upload package to test.pypi.org",
+            "command": "cd python && python3 setup.py sdist bdist_wheel && twine upload --repository testpypi dist/*",
+            "problemMatcher": [],
+        },
+        {
+            "type": "shell",
+            "label": "(WIP) Build and upload package to pypi.org",
+            "command": "cd python && python3 setup.py sdist bdist_wheel && twine upload dist/*",
             "problemMatcher": []
         },
     ]
