@@ -17,7 +17,7 @@ class TestRalRepositoryMongoDB:
     
     """
 
-    client_connection_str = "mongodb://localhost:27017/"
+    client_connection_str = "mongodb://localhost:27017/?directConnection=true&ssl=false"
     database_name = "openral_mongodb_py_test"
     collection_name = "ral_objects"
 
