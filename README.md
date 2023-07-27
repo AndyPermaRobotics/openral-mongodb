@@ -2,6 +2,11 @@
 
 Implementations of the RalRepositories of openral-core for MongoDB in various programming languages.
 
+## Packages
+
+* Python: [openral-mongodb-py](https://test.pypi.org/project/openral-mongodb-py/0.1.2/) (on test.pypi.org)
+* Flutter: [openral_mongodb](https://github.com/AndyPermaRobotics/openral-core) (not yet published on pub.dev)
+
 ## Hints
 
 ### Replica Set for Watching
