@@ -114,4 +114,11 @@ class RalMethodRepositoryMongoDb extends RalMethodRepository {
         .where((event) => event != null) //filter out null values from the map function
         .map<RalMethod>((event) => event!); //here we can safely cast to non-nullable, because we filtered out null values before
   }
+
+  @override
+  Future<void> deleteByUid(String uid) async {
+    final collection = mongoDb.collection(collectionName);
+
+    await collection.remove(where.eq("identity.UID", uid));
+  }
 }

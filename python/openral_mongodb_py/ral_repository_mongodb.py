@@ -72,7 +72,7 @@ class RalRepositoryMongoDB(RalRepository):
 
         return ral_objects
 
-
+    #TODO: we can use the new update functions for that
     def update_object_state(self, uid: str, state: str):
         """
         Updates the `objectState` of the [RalObject] with the given uid in the database.

@@ -99,4 +99,11 @@ class RalObjectRepositoryMongoDb extends RalObjectRepository {
     final ralObject = parsingResult.left;
     return ralObject;
   }
+
+  @override
+  Future<void> deleteByUid(String uid) async {
+    final collection = mongoDb.collection(collectionName);
+
+    await collection.remove(where.eq("identity.UID", uid));
+  }
 }
