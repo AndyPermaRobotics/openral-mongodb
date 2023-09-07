@@ -12,7 +12,7 @@ with open('README.md') as f:
 
 setup(
     name='openral_mongodb_py',
-    version='0.1.3',
+    version='0.1.5',
     description = 'MongoDB Implementation of a RalRepositories for openRAL.',
     long_description=readme,
     long_description_content_type='text/markdown',

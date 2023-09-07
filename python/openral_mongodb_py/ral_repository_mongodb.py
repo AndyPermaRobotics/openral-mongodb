@@ -1,10 +1,10 @@
 from abc import abstractmethod
-from typing import Any, Callable, List, Mapping, Optional
+from typing import Any, Callable, Generator, List, Mapping, Optional
 
 from openral_py.ral_object import RalObject
 from openral_py.repository import RalRepository
 from pymongo.database import Database
-
+from pymongo.change_stream import CollectionChangeStream
 
 class RalRepositoryMongoDB(RalRepository):
     """
@@ -83,3 +83,46 @@ class RalRepositoryMongoDB(RalRepository):
 
     def _get_collection(self):
         return self._database.get_collection(self._collectionName)
+    
+    # def get_stream_of_new_ral_objects(self) -> Generator[RalObject, Any, Any]:
+    #     """
+    #     Returns a stream of newly created [RalObject]s.
+    #     """
+
+    #     collection = self._get_collection()
+
+    #     pipeline = [
+    #         {"$match": {"operationType": "insert"}} #also possible "update" or "delete"
+    #     ]
+
+    #     cursor = collection.watch(pipeline)
+
+    #     for change in cursor:
+    #         doc = change["fullDocument"]
+    #         try:
+    #             ral_object = RalObject.from_map(doc)  # RalObject.fromMap(doc) im Dart-Code
+    #             yield ral_object
+    #         except Exception as e:
+    #             print("Warning: Detected ", e)  # Warnung ausgeben, wenn ein Fehler auftritt
+
+    # def get_stream_of_ral_objects(self) -> Generator[RalObject, Any, Any]:
+    #     """
+    #     Returns a stream of [RalObject]s that changed.
+    #     """
+
+    #     collection = self._get_collection()
+
+    #     pipeline = [
+    #         #{"$match": {"operationType": "insert"}}
+    #     ]
+
+    #     cursor = collection.watch(pipeline)
+
+    #     for change in cursor:
+    #         doc = change["fullDocument"] #TODO: fullDocument is only available for insert operations
+    #         try:
+    #             ral_object = RalObject.from_map(doc)  # RalObject.fromMap(doc) im Dart-Code
+    #             yield ral_object
+    #         except Exception as e:
+    #             print("Warning: Detected ", e)  # Warnung ausgeben, wenn ein Fehler auftritt
+
