@@ -1,2 +1,2 @@
 
-from .ral_repository_mongodb import RalRepositoryMongoDB
+from openral_mongodb_py.ral_object_repository_mongodb import RalObjectRepositoryMongoDB

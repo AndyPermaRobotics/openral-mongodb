@@ -12,14 +12,14 @@ with open('README.md') as f:
 
 setup(
     name='openral_mongodb_py',
-    version='0.1.5',
+    version='0.1.15',
     description = 'MongoDB Implementation of a RalRepositories for openRAL.',
     long_description=readme,
     long_description_content_type='text/markdown',
     author='Permarobotics GmbH',
     author_email='blech@permarobotics.com',
     url='https://github.com/AndyPermaRobotics/openral-mongodb-py',
-    packages=find_packages(include=['openral_mongodb_py', 'openral_mongodb_py.*']),
+    packages=find_packages(include=['openral_mongodb_py', 'openral_mongodb_py.*', 'openral_mongodb_py.*.*']),
     license='MIT',
     install_requires=requirements,
     keywords=[
